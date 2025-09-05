@@ -1,58 +1,57 @@
-let taskinput = document.getElementById("taskinput");
-let addbutton = document.getElementById("addbutton");
-let tasklist = document.getElementById("tasklist");
+const TaskInput = document.getElementById('TaskInput');
+const addButton = document.getElementById('addButton');
+const taskList = document.getElementById('taskList');
 
-let tasks = ["Tugas 1, Tugas 2, Tugas 3"];
+let tasks = [];
 
 function renderTasks() {
-    tasklist.innerHTML = "";
+    taskList.innerHTML = '';
     tasks.forEach((task, index) => {
-        const li = document.createElement("li");
+        const li = document.createElement('li');
         li.textContent = task;
-        
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add("delete-button")
-        
-       
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.className = 'delete-button';
+
         li.appendChild(deleteButton);
-        tasklist.appendChild(li);
+        taskList.appendChild(li);
+
+        deleteButton.addEventListener('click', () => {
+            deleteTask(index);
+        });
     });
 }
 
+
+
 function addTask() {
-    const task = taskinput.value.trim();
-    if (task === "" ) {
-        alert("Masukkan tugas");
-    }else{
+
+    if (TaskInput.value.trim() === '') {
+        alert('Please enter a task.');
+    } else {
+        const task = TaskInput.value.trim();
         tasks.push(task);
-
+        TaskInput.value = "";
         renderTasks();
-        taskinput.value = "";
-    
-    }
     }
 
-
-
-addbutton.addEventListener("click", addTask)
-
-taskinput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-        addTask();
-    }
-});
+}
 
 function deleteTask(index) {
     tasks.splice(index, 1);
     renderTasks();
 }
 
-tasklist.addEventListener("click", (e) => {
-    if (e.target.classList.contains("delete-button")) {
-        const index = Array.from(tasklist.children).indexOf(e.target.parentElement);
-        deleteTask(index);
+
+
+addButton.addEventListener('click', addTask);
+TaskInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        addTask();
     }
 });
+
+
 
 renderTasks();

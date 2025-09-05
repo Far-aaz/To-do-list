@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
+
 <body>
     <div class="container">
-    <h2>My agenda</h2>
-    <div class="input-group">
-        <input id="taskinput" type="text" placeholder="Masukkan tugas disini">
-        <button id="addbutton" class="add-button">Submit</button>
+        <h2>TO-Do LIST</h2>
+        <div class="input-area">
+            <input type="text" id="TaskInput" class="input">
+            <button class="add-button" id="addButton">Submit</button>
+        </div>
+        <ul class="list" id="taskList">
+            <li>
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Pariatur, ratione. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Aut quae recusandae ea itaque quod!
+                <button class="delete-button">Delete</button>
+            </li>
 
+
+        </ul>
     </div>
-    <ul id="tasklist">
-        <li>
-            
-            <button class="delete-button">Delete</button>
-        </li>
-    </ul>
-    
-</div>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
